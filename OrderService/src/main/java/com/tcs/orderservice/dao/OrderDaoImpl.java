@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.tcs.orderservice.model.Order;
-import com.tcs.orderservice.model.OrderRepository;
+import com.tcs.orderservice.service.repository.OrderRepository;
 
 public class OrderDaoImpl implements OrderDao {
 
