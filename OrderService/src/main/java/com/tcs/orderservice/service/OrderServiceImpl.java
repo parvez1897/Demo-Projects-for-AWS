@@ -3,10 +3,12 @@ package com.tcs.orderservice.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.tcs.orderservice.dao.OrderDao;
-import com.tcs.orderservice.model.Order;
+import com.tcs.orderservice.model.Orders;
 
+@Service
 public class OrderServiceImpl implements OrderService{
 
 	
@@ -14,12 +16,12 @@ public class OrderServiceImpl implements OrderService{
 	private OrderDao orderDao;
 	
 	@Override
-	public Order saveOrder(Order order) {
+	public Orders saveOrder(Orders order) {
 		return orderDao.saveOrder(order);
 	}
 
 	@Override
-	public Order getOrderByOrderId(int orderId) {
+	public Orders getOrderByOrderId(int orderId) {
 		return orderDao.getOrderByOrderId(orderId);
 	}
 
@@ -29,7 +31,7 @@ public class OrderServiceImpl implements OrderService{
 	}
 
 	@Override
-	public List<Order> getAllOrdersByCustomerId(int customerId) {
+	public List<Orders> getAllOrdersByCustomerId(int customerId) {
 		return orderDao.getAllOrdersByCustomerId(customerId);
 	}
 

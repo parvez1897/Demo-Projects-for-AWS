@@ -4,17 +4,17 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
-import com.tcs.orderservice.model.Order;
+import com.tcs.orderservice.model.Orders;
 
-@Component
+
 public interface OrderDao {
 	
-	Order saveOrder(Order order);
+	Orders saveOrder(Orders order);
 	
-	Order getOrderByOrderId(int orderId);
+	Orders getOrderByOrderId(int orderId);
 	
 	void deleteOrder(int orderId);
 	
-	List<Order> getAllOrdersByCustomerId(int customerId);
+	List<Orders> getAllOrdersByCustomerId(int customerId);
 	
 }

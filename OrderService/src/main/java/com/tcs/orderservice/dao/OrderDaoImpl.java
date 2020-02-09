@@ -3,22 +3,23 @@ package com.tcs.orderservice.dao;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-import com.tcs.orderservice.model.Order;
-import com.tcs.orderservice.service.repository.OrderRepository;
-
+import com.tcs.orderservice.model.Orders;
+import com.tcs.orderservice.repository.OrderRepository;
+@Component
 public class OrderDaoImpl implements OrderDao {
 
 	@Autowired
 	private OrderRepository orderRepository;
 	
 	@Override
-	public Order saveOrder(Order order) {
+	public Orders saveOrder(Orders order) {
 		return orderRepository.save(order);
 	}
 
 	@Override
-	public Order getOrderByOrderId(int orderId) {
+	public Orders getOrderByOrderId(int orderId) {
 		return orderRepository.findById(orderId).get();
 	}
 
@@ -28,7 +29,7 @@ public class OrderDaoImpl implements OrderDao {
 	}
 
 	@Override
-	public List<Order> getAllOrdersByCustomerId(int customerId) {
+	public List<Orders> getAllOrdersByCustomerId(int customerId) {
 		return orderRepository.getAllOrdersByCustomerId(customerId);
 	}
 

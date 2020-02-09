@@ -7,5 +7,5 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class CustomerOrdersResponse {
 
-	private List<Order> orders;
+	private List<Orders> orders;
 }

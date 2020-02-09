@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tcs.orderservice.model.CustomerOrdersResponse;
-import com.tcs.orderservice.model.Order;
+import com.tcs.orderservice.model.Orders;
 import com.tcs.orderservice.service.OrderService;
 
 @RestController
@@ -40,7 +40,7 @@ public class OrderController {
 	
 
 	@PostMapping("/save-order")
-	public ResponseEntity<Order> saveOrder(@RequestBody Order order){
+	public ResponseEntity<Orders> saveOrder(@RequestBody Orders order){
 		return new ResponseEntity<>(orderService.saveOrder(order),HttpStatus.CREATED);
 	}
 	
@@ -51,12 +51,12 @@ public class OrderController {
 	}
 	
 	@GetMapping("/get-order/{orderId}")
-	public ResponseEntity<Order> getOrderByOrderId(@PathVariable(value="orderId") int orderId){
+	public ResponseEntity<Orders> getOrderByOrderId(@PathVariable(value="orderId") int orderId){
 		return new ResponseEntity<>(orderService.getOrderByOrderId(orderId),HttpStatus.OK);
 	}
 	
 	@PutMapping("/update-order")
-	public ResponseEntity<Order> updateOrder(@RequestBody Order order){
+	public ResponseEntity<Orders> updateOrder(@RequestBody Orders order){
 		return new ResponseEntity<>(orderService.saveOrder(order),HttpStatus.OK);
 	}
 	

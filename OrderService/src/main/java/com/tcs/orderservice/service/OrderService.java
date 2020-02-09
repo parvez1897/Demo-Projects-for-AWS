@@ -4,18 +4,18 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.tcs.orderservice.model.Order;
+import com.tcs.orderservice.model.Orders;
 
-@Service
+
 public interface OrderService {
 	
-Order saveOrder(Order order);
+Orders saveOrder(Orders order);
 	
-	Order getOrderByOrderId(int orderId);
+	Orders getOrderByOrderId(int orderId);
 	
 	void deleteOrder(int orderId);
 	
-	List<Order> getAllOrdersByCustomerId(int customerId);
+	List<Orders> getAllOrdersByCustomerId(int customerId);
 	
 
 }

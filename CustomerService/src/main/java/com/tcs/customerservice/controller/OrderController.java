@@ -21,7 +21,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tcs.customerservice.config.EndpointSettings;
 import com.tcs.customerservice.model.CustomerOrdersResponse;
-import com.tcs.customerservice.model.Order;
+import com.tcs.customerservice.model.Orders;
 
 @RestController
 @RequestMapping("/order")
@@ -34,11 +34,11 @@ public class OrderController {
 	private RestTemplate restTemplate;
 
 	@PostMapping("/save-order")
-	public ResponseEntity<Order> saveOrder(@RequestBody Order order){
+	public ResponseEntity<Orders> saveOrder(@RequestBody Orders order){
 		HttpHeaders header = new HttpHeaders();
 		header.setContentType(MediaType.APPLICATION_JSON);
 		HttpEntity<String> entity = new HttpEntity<>(mapToJson(order),header);
-		HttpEntity<Order> response = restTemplate.exchange(endpoints.getOrderServiceEndpoint()+"/order/save-order",HttpMethod.POST, entity, Order.class);
+		HttpEntity<Orders> response = restTemplate.exchange(endpoints.getOrderServiceEndpoint()+"/order/save-order",HttpMethod.POST, entity, Orders.class);
 		return new ResponseEntity<>(response.getBody(),HttpStatus.CREATED);
 	}
 	
@@ -50,17 +50,17 @@ public class OrderController {
 	}
 	
 	@GetMapping("/get-order/{orderId}")
-	public ResponseEntity<Order> getOrderByOrderId(@PathVariable(value="orderId") int orderId){
-		Order order = restTemplate.getForObject(endpoints.getOrderServiceEndpoint()+"/order/get-order/"+orderId, Order.class);
+	public ResponseEntity<Orders> getOrderByOrderId(@PathVariable(value="orderId") int orderId){
+		Orders order = restTemplate.getForObject(endpoints.getOrderServiceEndpoint()+"/order/get-order/"+orderId, Orders.class);
 		return new ResponseEntity<>(order,HttpStatus.OK);
 	}
 	
 	@PutMapping("/save-order")
-	public ResponseEntity<Order> updateOrder(@RequestBody Order order){
+	public ResponseEntity<Orders> updateOrder(@RequestBody Orders order){
 		HttpHeaders header = new HttpHeaders();
 		header.setContentType(MediaType.APPLICATION_JSON);
 		HttpEntity<String> entity = new HttpEntity<>(mapToJson(order),header);
-		HttpEntity<Order> response = restTemplate.exchange(endpoints.getOrderServiceEndpoint()+"/order/save-order",HttpMethod.POST, entity, Order.class);
+		HttpEntity<Orders> response = restTemplate.exchange(endpoints.getOrderServiceEndpoint()+"/order/save-order",HttpMethod.POST, entity, Orders.class);
 		return new ResponseEntity<>(response.getBody(),HttpStatus.CREATED);
 	}
 	
